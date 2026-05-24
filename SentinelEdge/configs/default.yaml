@@ -1,0 +1,54 @@
+# SentinelEdge Default Configuration Schema
+# Suitable for defense-grade UAV surveillance optimization tasks
+
+project:
+  name: "SentinelEdge"
+  description: "Real-Time Edge AI Optimization Pipeline for UAV Surveillance"
+  version: "1.0.0"
+
+paths:
+  dataset_dir: "datasets"
+  model_dir: "models"
+  weights_dir: "weights"
+  export_dir: "export"
+  results_dir: "results"
+  log_file: "logs/pipeline.log"
+
+train:
+  model_type: "yolov8n"          # Options: yolov8n, yolov8s, yolov8m
+  img_size: 640
+  epochs: 10                     # Reduced for simulation demonstration, can scale up
+  batch_size: 16
+  device: "cpu"                  # Defaulting to cpu, can switch to cuda:0 if available
+  workers: 4
+  optimizer: "SGD"               # Options: SGD, Adam, AdamW
+  lr0: 0.01                      # Initial learning rate
+  augment: true                  # Enable default augmentations
+
+export:
+  format: "onnx"                 # Default export target
+  opset: 12
+  dynamic: true                  # Allow dynamic shapes
+  half: false                    # FP16 export configuration
+
+tensorrt:
+  workspace_size: 1073741824     # 1GB in bytes
+  fp16: true                     # Enable FP16 engine builder
+  int8: false                    # Enable INT8 calibration builder
+  calibration_dataset: "datasets/calibration"
+  calib_batch_size: 8
+  min_shape: [1, 3, 640, 640]
+  opt_shape: [1, 3, 640, 640]
+  max_shape: [4, 3, 640, 640]
+
+benchmark:
+  iterations: 100                # Number of warm-up iterations
+  runs: 500                      # Number of performance measurement runs
+  batch_sizes: [1, 2, 4]
+  resolutions: [320, 640, 1280]  # Resolutions to test scale tradeoffs
+
+edge_simulation:
+  cpu_limit_percent: 50          # Limit simulated process affinity or throttle
+  memory_limit_mb: 2048          # Simulated memory budget limit
+  power_modes: ["low_power", "balanced", "max_performance"]
+  active_mode: "balanced"
