@@ -1,10 +1,10 @@
-# SentinelEdge: Real-Time Edge AI Optimization Pipeline for UAV Surveillance
+# AgisEdge: Real-Time Edge AI Optimization Pipeline for UAV Surveillance
 
 [![Hardware Target](https://img.shields.io/badge/Target-NVIDIA%20Jetson-green.svg)](https://www.nvidia.com/en-us/autonomous-machines/embedded-systems/)
 [![Pipeline Backend](https://img.shields.io/badge/Backend-PyTorch%20%7C%20ONNX%20%7C%20TensorRT-orange.svg)](#)
 [![Security Classification](https://img.shields.io/badge/Classification-DRDO%20Research-blue.svg)](#)
 
-SentinelEdge is a modular, defense-grade Systems + Optimization pipeline designed to fine-tune, optimize, benchmark, and deploy real-time object detection models for Unmanned Aerial Vehicle (UAV) surveillance environments.
+AgisEdge is a modular, defense-grade Systems + Optimization pipeline designed to fine-tune, optimize, benchmark, and deploy real-time object detection models for Unmanned Aerial Vehicle (UAV) surveillance environments.
 
 ---
 
@@ -52,7 +52,7 @@ SentinelEdge/
 
 ```bash
 # Clone the repository
-git clone https://github.com/example/SentinelEdge.git
+git clone https://github.com/example/AgisEdge.git
 cd SentinelEdge
 
 # Install prerequisites
